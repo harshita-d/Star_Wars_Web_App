@@ -135,16 +135,6 @@ function ExtraMovieData() {
                 >
                   <div>
                     <div>{item.name}</div>
-                    {/*  <div
-                      className={styles.favIconButton}
-                      onClick={() => favoriteSelectedHandler(item.name)}
-                    >
-                      <img
-                        src={favoriteWheatIcon}
-                        alt="favoriteIcon"
-                        style={{ width: "50%" }}
-                      />
-                    </div> */}
                   </div>
                   {movieExtraData !== null && mainComponentData(item)}
                   <div
