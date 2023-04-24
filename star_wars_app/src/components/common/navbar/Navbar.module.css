@@ -1,0 +1,21 @@
+.navbarOuterDiv {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 3rem;
+  width: 100%;
+  /*  background-image: url("../../../assets/wallpaper3.png"); */
+  background-color: transparent;
+  position: fixed;
+  z-index: 2;
+}
+
+.navbarOuterDiv > div {
+  height: 3rem;
+}
+.logoutButton {
+  font-size: 30px;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}

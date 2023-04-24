@@ -1,0 +1,106 @@
+.homeOuterDiv {
+  /* background-image: url("../../assets/wallpaper5.webp"); */
+  /* background-repeat: no-repeat; */
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  position: fixed;
+  z-index: 0;
+  background-color: black;
+  background-image: url("../../assets/clones1.webp");
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-size: 100%;
+  animation: 40s para infinite linear;
+}
+
+@keyframes para {
+  0% {
+    background-position: 0 0;
+  }
+  20% {
+    background-position: 50px -30px;
+  }
+  40% {
+    background-position: 100px -50px;
+  }
+  60% {
+    background-position: 50px -100px;
+  }
+  80% {
+    background-position: 10px -50px;
+  }
+  100% {
+    background-position: 0px 0;
+  }
+}
+
+.homeInnerDiv {
+  position: absolute;
+  margin-left: 6%;
+}
+.demo .homeSectionOne {
+  position: absolute;
+  margin-top: 46vh;
+  /*   top: 70%; */
+  left: 15vh;
+  -webkit-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+  color: #fff;
+  font: normal 400 20px/1 "Josefin Sans", sans-serif;
+  letter-spacing: 1em;
+  text-decoration: none;
+  font-weight: 900;
+  transition: opacity 0.3s;
+  cursor: pointer;
+}
+.demo .homeSectionOne:hover {
+  opacity: 0.5;
+}
+
+.section05 .homeSectionOne {
+  padding-top: 70px;
+  font-size: 35px;
+}
+.section05 .homeSectionOne span {
+  position: absolute;
+  top: 0;
+  left: 45%;
+  width: 24px;
+  height: 24px;
+  margin-left: -12px;
+  border-left: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  -webkit-animation: sdb05 1.5s infinite;
+  animation: sdb05 1.5s infinite;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+@-webkit-keyframes sdb05 {
+  0% {
+    -webkit-transform: rotate(-45deg) translate(0, 0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: rotate(-45deg) translate(-20px, 20px);
+    opacity: 0;
+  }
+}
+@keyframes sdb05 {
+  0% {
+    transform: rotate(-45deg) translate(0, 0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(-45deg) translate(-20px, 20px);
+    opacity: 0;
+  }
+}

@@ -1,0 +1,44 @@
+.detailsOuterDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 20%; */
+  margin: 5% 0%;
+  text-decoration: none;
+}
+
+.detailsImageDiv {
+  display: flex;
+  justify-content: center;
+  margin: 0% 5%;
+}
+
+.detailsImageDiv > img {
+  border-radius: 20%;
+  height: 40rem;
+}
+
+.detailsInfoDiv {
+  display: flex;
+  justify-content: center;
+}
+.detailsTextDiv {
+  display: flex;
+  flex-direction: column;
+  color: wheat;
+  font-size: 25px;
+  gap: 65px;
+}
+
+.detailBtn {
+  border: 4px solid wheat;
+  padding: 20px;
+  border-radius: 45px;
+  cursor: pointer;
+}
+
+.detailBtn:hover {
+  /*  letter-spacing: 25px; */
+  transform: scale(1.2);
+  transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}

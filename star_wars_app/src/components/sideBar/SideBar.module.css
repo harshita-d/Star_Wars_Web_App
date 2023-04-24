@@ -1,0 +1,46 @@
+.loginOuterDiv {
+  /*   position: absolute;
+    top: 50%;
+    left: 10%; */
+  font-size: 40px;
+  letter-spacing: 1em;
+  /*   z-index: 5;*/
+  background-color: transparent;
+  color: white;
+  font-weight: bolder;
+  font-family: "Anton", sans-serif;
+  font-family: "Roboto Condensed", sans-serif;
+  /*  position: fixed; */
+  animation: 3s slide-up;
+  margin-top: 30vh;
+}
+
+.LinkText {
+  text-decoration: none;
+  color: white;
+}
+
+.loginFirstDiv {
+  border: 8px solid white;
+  width: 62vh;
+  cursor: pointer;
+  margin-bottom: 5vh;
+  padding: 2vh;
+}
+
+.loginFirstDiv {
+}
+@keyframes slide-up {
+  from {
+    margin-top: 100vh;
+  }
+  to {
+    margin-top: 30vh;
+  }
+}
+
+.loginFirstDiv:hover {
+  /*  letter-spacing: 25px; */
+  transform: scale(1.2);
+  transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}

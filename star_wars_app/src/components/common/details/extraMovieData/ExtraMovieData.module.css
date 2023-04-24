@@ -1,0 +1,116 @@
+.movieDataInnerDiv {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 800px;
+}
+.movieDataInnerDiv > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.movieDataInnerDiv > div > span {
+  display: flex;
+  justify-content: center;
+}
+
+.movieDataText {
+  font-size: 35px;
+}
+
+.accordianWrapperDiv {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.accordianOuterDiv {
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  width: 100%;
+  gap: 15px;
+  cursor: pointer;
+}
+
+.accordianInnerDiv {
+  /*  width: 50%; */
+  flex-grow: 1;
+  flex-shrink: 1;
+  overflow: hidden;
+  transition: all 0.5s ease;
+  border: 5px solid aliceblue;
+  background: url("../../../../assets/wallpaper5.webp");
+  /*   background-repeat: repeat;
+  background-size: cover; */
+  border-radius: 50px;
+  position: relative;
+  font-size: 25px;
+}
+
+/* .accordianOuterDiv > div:hover {
+  flex-shrink: 0;
+} */
+
+/* .accordianOuterDiv > div > div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; 
+  padding: 17px;
+} */
+
+.accordianInnerDiv > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 17px;
+}
+
+.accordianInnerDiv:hover {
+  flex-shrink: 0;
+}
+
+.accordianInnerDiv > div > div:first-child {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.favIconButton {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+  color: wheat;
+  font-size: 20px;
+}
+
+.favIconButton:hover {
+  transform: scale(1.5);
+  transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.favIconTextButton {
+  cursor: pointer;
+  display: flex;
+  justify-content: center !important;
+  align-items: center;
+  color: wheat;
+  font-size: 20px;
+}
+
+.addFavButton {
+  border: 2px solid #f5deb3;
+  background-color: #ffffff7a;
+  display: flex;
+  justify-content: center !important;
+  align-items: center;
+}
+
+.addFavButton:hover {
+  transform: scale(1.5);
+  transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}

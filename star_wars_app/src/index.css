@@ -1,0 +1,30 @@
+body {
+  margin: 0;
+  font-weight: bolder;
+  font-family: "Anton", sans-serif;
+  font-family: "Roboto Condensed", sans-serif;
+  letter-spacing: 0.28em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+::-webkit-scrollbar {
+  width: 15px;
+}
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px white;
+  /* background-image: url(""); */
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background-image: url("./assets/wallpaper10.jpg");
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-image: url("./assets/wallpaper10.jpg");
+}

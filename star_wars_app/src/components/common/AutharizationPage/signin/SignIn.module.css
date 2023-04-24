@@ -1,0 +1,80 @@
+.signinInputDiv {
+  display: flex;
+  flex-direction: column;
+  margin: 5%;
+  font-size: 22px;
+  color: #000000e3;
+}
+
+.signinInputDiv > span {
+  margin: 2% 0%;
+}
+
+.signinInputDiv > input {
+  padding: 2%;
+  letter-spacing: 1em;
+  border-radius: 30px;
+  font-family: "Roboto", sans-serif;
+}
+
+.signinContainer > img {
+  width: 3%;
+  position: absolute;
+  top: 5%;
+  right: 28%;
+  cursor: pointer;
+}
+
+.signinHeadingDiv {
+  color: #000000e3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3% 3% 0%;
+  font-size: 36px;
+}
+
+.signinButton {
+  display: flex;
+  flex-direction: column;
+  margin: 5% 5% 0%;
+  font-size: 22px;
+  color: #000000e3;
+}
+.signinButton {
+  width: -webkit-fill-available;
+  border-radius: 30px;
+  display: flex;
+  padding: 1%;
+  margin: 2% 5%;
+  /* align-content: center; */
+  justify-content: center;
+  align-items: center;
+  background: #000000e3;
+  color: white;
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: 1em;
+  font-family: "Roboto", sans-serif;
+  cursor: pointer;
+}
+
+.siginPageOuterDiv > p {
+  letter-spacing: 0.28em;
+  color: #000000e3;
+  margin: 5%;
+}
+
+.siginPageOuterDiv > p > a {
+  text-decoration: underline;
+  color: #000000e3;
+}
+
+.signinErrorMsg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: red;
+  letter-spacing: 0.28em;
+  margin: 5% 5% 0%;
+}
