@@ -21,30 +21,23 @@
   align-items: center;
   justify-content: center;
   gap: 25px;
+  padding-top: 10px;
 }
 
-.logoutButton > span:first-child {
-  border: 2px solid white;
-  padding: 2px 17px;
-  border-radius: 8px;
+.logoutButton > span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.logoutButton > span:last-child {
+  padding: 3px;
+}
+
+.logoutButton > span {
   cursor: pointer;
 }
-/* .logoutButton > span:first-child :hover {
-  background-color: #f5f5f5;
-  color: #000;
-}
-*/
 
-.logoutButton > span:nth-child(2) > img {
-  cursor: pointer;
-}
-
-/* .logoutButton > span:nth-child(2) img:hover {
-  transform: scale(1.2);
-  transition: transform 0.2s ease-in-out;
-} */
-
-.logoutButton > span:nth-child(2) > img:hover {
+.logoutButton > span:hover {
   animation: heartbeat 2s ease-in-out infinite both;
 }
 
@@ -58,9 +51,4 @@
   100% {
     transform: scale(1);
   }
-}
-
-.logoutButton span:first-child:hover {
-  background-color: #f5f5f5;
-  color: black;
 }

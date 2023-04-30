@@ -7,8 +7,10 @@ import { auth } from "../auth/AuthConfig";
 import { useDispatch } from "react-redux";
 import { authActions } from "../../../store/reducer/AuthReducer";
 import { useNavigate } from "react-router-dom";
-import FavIcon from "../../../assets/favoriteIcon.png";
+import FavIcon from "../../../assets/FavIcon.png";
 import { useEffect, useState } from "react";
+import home from "../../../assets/homeIcon.png";
+import logoutIcon from "../../../assets/logout.png";
 
 function Navbar() {
   const dispatch = useDispatch();
@@ -56,9 +58,17 @@ function Navbar() {
         </Link>
       </div>
       <div className={styles.logoutButton}>
-        <span onClick={handleLogout}> Logout</span>
+        <span>
+          <img src={home} alt="home" />
+          Home
+        </span>
         <span onClick={handleClickFavorite}>
           <img src={FavIcon} alt="FavIcon" />
+          Favorites
+        </span>
+        <span onClick={handleLogout}>
+          <img src={logoutIcon} alt="logoutIcon" style={{ width: "25%" }} />
+          Logout
         </span>
       </div>
     </div>
