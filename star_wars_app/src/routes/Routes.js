@@ -8,6 +8,7 @@ import Home from "../pages/Home";
 import CheckAuthStatus from "../components/common/helper/CheckAuthStatus";
 import AuthTemplate from "../components/common/AutharizationPage/authTemplate/AuthTemplate";
 import Details from "../components/common/details/Details";
+import FavoriteView from "../components/Favorites/FavoriteView";
 
 export const routes = createBrowserRouter([
   {
@@ -18,6 +19,11 @@ export const routes = createBrowserRouter([
       { path: "auth", element: <AuthTemplate /> },
       { path: "/movie", element: <MovieOverview />, loader: CheckAuthStatus },
       { path: "/movieDetail", element: <Details />, loader: CheckAuthStatus },
+      {
+        path: "/favorites",
+        element: <FavoriteView />,
+        loader: CheckAuthStatus,
+      },
     ],
   },
 ]);

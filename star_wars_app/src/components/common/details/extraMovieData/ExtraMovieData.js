@@ -8,10 +8,17 @@ import CharacterDetails from "../charactersDetails/CharacterDetails";
 import PlanetsDetails from "../planetsDetails/PlanetsDetails";
 import favoriteWheatIcon from "../../../../assets/FavWheatLineIcon.png";
 import favWhiteLineIcon from "../../../../assets/FavWheatFilledIcon.png";
+import StarshipDetails from "../starshipDetails/StarshipDetails";
+import { FirestoreAPISetup } from "../../api/FirestoreAPISetup";
+import { fireStore } from "../../auth/AuthConfig";
 
 function ExtraMovieData() {
   const dispatch = useDispatch();
   const [onMouseOver, setonMouseOver] = useState(false);
+  const [StoreFavData, setStoreFavData] = useState({
+    nameVal: null,
+    typeVal: null,
+  });
   const movieApiData = useSelector((state) => state.movieReducer.movie);
   const movieExtraData = useSelector((state) => state.movieReducer.extraData);
   const sideBarStatusValue = useSelector(
@@ -47,9 +54,7 @@ function ExtraMovieData() {
           apiDataCall.map((apiCall) => axios.get(apiCall))
         );
 
-        const charactersDataArray = await res.map(
-          (character) => character.data
-        );
+        const charactersDataArray = res.map((character) => character.data);
 
         dispatch(movieAction.charactersDataChange(charactersDataArray));
         dispatch(loaderChangeAction.loaderCountDecrease());
@@ -62,7 +67,6 @@ function ExtraMovieData() {
         const res = axios.get(
           "https://starwarsapp-4a647-default-rtdb.firebaseio.com/favoritesSelected.json"
         );
-        console.log("res-get", res);
       } catch (error) {
         console.log("error", error);
       }
@@ -75,14 +79,16 @@ function ExtraMovieData() {
         return <CharacterDetails charactersData={item} />;
       case 3:
         return <PlanetsDetails planets={item} />;
+      case 4:
+        return <StarshipDetails starshipsData={item} />;
       default:
         break;
     }
   };
 
-  const favoriteSelectedHandler = async (movieName) => {
+  const favoriteSelectedHandler = (movieName, item) => {
     const payload = { movie: movieName };
-    try {
+    /*     try {
       const res = axios.post(
         "https://starwarsapp-4a647-default-rtdb.firebaseio.com/favoritesSelected.json",
         payload
@@ -90,7 +96,16 @@ function ExtraMovieData() {
       console.log("res", res);
     } catch (error) {
       console.log("error", error);
+    } */
+    var type = "";
+    if (sideBarStatusValue === 2) {
+      type = "characters";
+    } else if (sideBarStatusValue === 3) {
+      type = "planets";
+    } else if (sideBarStatusValue === 4) {
+      type = "star ships";
     }
+    setStoreFavData({ nameVal: movieName, typeVal: type });
   };
 
   const handleChangeHeight = (value) => {
@@ -111,20 +126,7 @@ function ExtraMovieData() {
     <>
       <div className={styles.movieDataInnerDiv}>
         <div className={styles.accordianWrapperDiv}>
-          {console.log("movieExtraData", movieExtraData)}
-          <div
-            id="accordianOuterDivID"
-            className={styles.accordianOuterDiv}
-            /*  style={{
-              height: `${
-                movieExtraData !== null
-                  ? onMouseOver && movieExtraData?.length < 4
-                    ? movieExtraData?.length * 10
-                    : movieExtraData?.length * 4
-                  : 0
-              }rem`,
-            }} */
-          >
+          <div id="accordianOuterDivID" className={styles.accordianOuterDiv}>
             {movieExtraData?.map((item, index) => {
               return (
                 <div
@@ -139,7 +141,7 @@ function ExtraMovieData() {
                   {movieExtraData !== null && mainComponentData(item)}
                   <div
                     className={styles.favIconTextButton}
-                    onClick={() => favoriteSelectedHandler(item.name)}
+                    onClick={() => favoriteSelectedHandler(item.name, item)}
                   >
                     <span className={styles.addFavButton}>
                       <img
@@ -155,6 +157,12 @@ function ExtraMovieData() {
             })}
           </div>
         </div>
+        {StoreFavData.nameVal !== null && (
+          <FirestoreAPISetup
+            name={StoreFavData.nameVal}
+            type={StoreFavData.typeVal}
+          />
+        )}
       </div>
     </>
   );

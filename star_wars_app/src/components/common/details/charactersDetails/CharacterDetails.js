@@ -5,7 +5,6 @@ import favoriteIcon from "../../../../assets/FavOutlineIcon.png";
 
 function CharacterDetails(props) {
   const { charactersData } = props;
-  console.log("charactersData", charactersData);
 
   return (
     <div className={style.charactersContainer}>

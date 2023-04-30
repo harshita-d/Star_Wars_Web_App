@@ -5,10 +5,11 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { RouterProvider } from "react-router-dom";
 import { routes } from "./routes/Routes";
-import { Provider } from "react-redux";
-import store from "./store/reduxIndex";
 import AuthProvider from "./providers/AuthProvider";
 import LoaderProvider from "./providers/LoaderProvider";
+import { Provider, useDispatch } from "react-redux";
+
+import store from "./store/reduxIndex";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

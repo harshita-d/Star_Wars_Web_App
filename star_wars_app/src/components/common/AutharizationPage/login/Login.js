@@ -31,12 +31,9 @@ function Login() {
     signInWithEmailAndPassword(auth, logInDetails.email, logInDetails.password)
       .then((userCredential) => {
         // Signed in
-        console.log("userCredential", userCredential);
         const user = userCredential.user;
-
         sessionStorage.setItem("token", user.accessToken);
         dispatch(authActions.loggingStatus(user));
-
         navigate("/");
       })
       .catch((error) => {
