@@ -5,7 +5,7 @@ import styles from "./Details.module.css";
 import { urlConfig } from "../../../config/URLConfig";
 import { useDispatch, useSelector } from "react-redux";
 import { movieAction } from "../../../store/reducer/MovieReducer";
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { loaderChangeAction } from "../../../store/reducer/LoaderReducer";
 import MovieDataSidebar from "./movieSidebar/movieDataSidebar";
 import DataTemplate from "./dataTemplate/DataTemplate";
@@ -13,8 +13,6 @@ import ExtraMovieData from "./extraMovieData/ExtraMovieData";
 
 function Details() {
   let { state } = useLocation();
-  //const { id } = useParams();
-  //const state = { id: 4 };
   const data = [
     { images: "ep1.jpg", id: 4 },
     { images: "ep2.jpg", id: 5 },
@@ -30,8 +28,6 @@ function Details() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    //MovieDataAPI(dispatch, state);
-
     dispatch(loaderChangeAction.loaderCountIncrease());
     dispatch(movieAction.sideBarChange(1));
     (async () => {
@@ -41,7 +37,6 @@ function Details() {
         );
         dispatch(movieAction.movieData(response.data));
         const img = data.filter((item) => item.id === Number(state.id));
-        console.log("img", img[0]);
         setmovieImage(img[0]);
         dispatch(loaderChangeAction.loaderCountDecrease());
       } catch (err) {

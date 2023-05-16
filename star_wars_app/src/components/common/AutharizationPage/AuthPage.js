@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 function AuthPage() {
   const navigate = useNavigate();
   const handleShowLogin = () => {
-    //setShowLoginPage(!showLoginPage);
     navigate("/auth?mode=signin");
   };
   return (

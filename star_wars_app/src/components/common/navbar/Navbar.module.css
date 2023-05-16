@@ -8,6 +8,7 @@
   background-color: transparent;
   position: fixed;
   z-index: 2;
+  /*background-color: #f0f8ff3b;*/
 }
 
 .navbarOuterDiv > div {
@@ -46,7 +47,7 @@
     transform: scale(1);
   }
   50% {
-    transform: scale(1.25);
+    transform: scale(1.15);
   }
   100% {
     transform: scale(1);

@@ -3,8 +3,6 @@ function Home() {
   return (
     <>
       <HomePage />
-      {/* <Login /> */}
-      {/* <MovieOverview /> */}
     </>
   );
 }

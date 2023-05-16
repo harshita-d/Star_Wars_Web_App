@@ -20,7 +20,7 @@ export const routes = createBrowserRouter([
       { path: "/movie", element: <MovieOverview />, loader: CheckAuthStatus },
       { path: "/movieDetail", element: <Details />, loader: CheckAuthStatus },
       {
-        path: "/favorites",
+        path: "/favourites",
         element: <FavoriteView />,
         loader: CheckAuthStatus,
       },

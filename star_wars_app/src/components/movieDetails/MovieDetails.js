@@ -8,7 +8,6 @@ import { memo } from "react";
 import { useState } from "react";
 
 function MovieDetails() {
-  const [movieId, setmovieId] = useState(null);
   const data = [
     { text: "epOneText.png", images: "episodeOne.jpg", id: 4 },
     { text: "EpTwoText.png", images: "episodeTwo.jpg", id: 5 },
@@ -17,10 +16,6 @@ function MovieDetails() {
     { text: "epFiveText.png", images: "episodeFive.jpg", id: 2 },
     { text: "epSixText.png", images: "episodeSix.jpg", id: 3 },
   ];
-
-  const handleClickMovie = (id) => {
-    setmovieId(id);
-  };
   return (
     <div>
       {data.map((item, index) => {
@@ -28,8 +23,6 @@ function MovieDetails() {
           <div key={item.id}>
             <Link
               to={`/movieDetail`}
-              //search: "?name=azheraleem",
-              //onClick={e=>handleClickMovie(item.id)}
               className={style.detailsOuterDiv}
               state={{ id: `${item.id}` }}
             >

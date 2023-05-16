@@ -14,25 +14,25 @@ import { loaderChangeAction } from "../../store/reducer/LoaderReducer";
 
 function FavoriteView() {
   const userData = useSelector((state) => state.authReducer.authData);
-  const favData = useSelector((state) => state.favoriteReducer?.favorites);
+  const favData = useSelector((state) => state.favoriteReducer?.favourites);
   const dispatch = useDispatch();
 
   useEffect(() => {
     async function getData() {
       dispatch(loaderChangeAction.loaderCountIncrease());
       const docRef = fireStore.collection("users").doc(userData?.uid);
-      const favoritesCollectionRef = docRef.collection("favorites");
-      const querySnapshot = await favoritesCollectionRef.get();
-      const favoritesList = [];
+      const favouritesCollectionRef = docRef.collection("favourites");
+      const querySnapshot = await favouritesCollectionRef.get();
+      const favouritesList = [];
       querySnapshot.forEach((doc, i) => {
         const favorite = doc.data();
         favorite.id = doc.id;
-        favoritesList.push(favorite);
+        favouritesList.push(favorite);
       });
       dispatch(loaderChangeAction.loaderCountDecrease());
-      dispatch(favAction.favoritesData(favoritesList));
-      console.log("favoritesList", favoritesList);
+      dispatch(favAction.favouritesData(favouritesList));
     }
+
     getData();
   }, [userData]);
 
@@ -50,13 +50,13 @@ function FavoriteView() {
       const docRef = fireStore
         .collection("users")
         .doc(userData?.uid)
-        .collection("favorites")
+        .collection("favourites")
         .doc(docId);
 
       await docRef.delete();
       const arrayData = favData.filter((item) => item.id !== docId);
       console.log("arrayData", arrayData);
-      dispatch(favAction.favoritesData(arrayData));
+      dispatch(favAction.favouritesData(arrayData));
       console.log("deleted");
     } catch (err) {
       console.log("error", err);
@@ -65,7 +65,7 @@ function FavoriteView() {
 
   return (
     <div className={styles.FavBody}>
-      <span>Favorites</span>
+      <span>favourites</span>
       <div className={styles.FavcardList}>
         {favData &&
           favData.map((item, index) => {

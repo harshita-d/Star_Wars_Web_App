@@ -10,7 +10,7 @@ export const FirestoreAPISetup = (props) => {
   useEffect(() => {
     async function getData() {
       const docRef = fireStore.collection("users").doc(userData.uid);
-      const favoritesCollectionRef = docRef.collection("favorites");
+      const favouritesCollectionRef = docRef.collection("favourites");
 
       const favoriteMovie = {
         email: userData.email,
@@ -21,7 +21,7 @@ export const FirestoreAPISetup = (props) => {
         epId: movieData.episode_id,
       };
 
-      favoritesCollectionRef
+      favouritesCollectionRef
         .add(favoriteMovie)
         .then((docRef) => {
           console.log("Document saved!");

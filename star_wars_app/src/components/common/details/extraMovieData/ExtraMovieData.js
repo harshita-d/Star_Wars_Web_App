@@ -6,11 +6,9 @@ import { movieAction } from "../../../../store/reducer/MovieReducer";
 import { loaderChangeAction } from "../../../../store/reducer/LoaderReducer";
 import CharacterDetails from "../charactersDetails/CharacterDetails";
 import PlanetsDetails from "../planetsDetails/PlanetsDetails";
-import favoriteWheatIcon from "../../../../assets/FavWheatLineIcon.png";
 import favWhiteLineIcon from "../../../../assets/FavWheatFilledIcon.png";
 import StarshipDetails from "../starshipDetails/StarshipDetails";
 import { FirestoreAPISetup } from "../../api/FirestoreAPISetup";
-import { fireStore } from "../../auth/AuthConfig";
 
 function ExtraMovieData() {
   const dispatch = useDispatch();
@@ -53,22 +51,12 @@ function ExtraMovieData() {
         const res = await Promise.all(
           apiDataCall.map((apiCall) => axios.get(apiCall))
         );
-
         const charactersDataArray = res.map((character) => character.data);
-
         dispatch(movieAction.charactersDataChange(charactersDataArray));
         dispatch(loaderChangeAction.loaderCountDecrease());
       } catch (error) {
         console.log("error", error);
         dispatch(loaderChangeAction.loaderCountDecrease());
-      }
-
-      try {
-        const res = axios.get(
-          "https://starwarsapp-4a647-default-rtdb.firebaseio.com/favoritesSelected.json"
-        );
-      } catch (error) {
-        console.log("error", error);
       }
     })();
   }, [sideBarStatusValue]);
@@ -86,17 +74,7 @@ function ExtraMovieData() {
     }
   };
 
-  const favoriteSelectedHandler = (movieName, item) => {
-    const payload = { movie: movieName };
-    /*     try {
-      const res = axios.post(
-        "https://starwarsapp-4a647-default-rtdb.firebaseio.com/favoritesSelected.json",
-        payload
-      );
-      console.log("res", res);
-    } catch (error) {
-      console.log("error", error);
-    } */
+  const favouriteselectedHandler = (movieName, item) => {
     var type = "";
     if (sideBarStatusValue === 2) {
       type = "characters";
@@ -141,7 +119,7 @@ function ExtraMovieData() {
                   {movieExtraData !== null && mainComponentData(item)}
                   <div
                     className={styles.favIconTextButton}
-                    onClick={() => favoriteSelectedHandler(item.name, item)}
+                    onClick={() => favouriteselectedHandler(item.name, item)}
                   >
                     <span className={styles.addFavButton}>
                       <img

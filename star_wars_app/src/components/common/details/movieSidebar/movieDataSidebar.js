@@ -9,7 +9,6 @@ function MovieDataSidebar(id) {
     (state) => state.movieReducer.sideBarStatus
   );
   const handleChangeTab = (tabId) => {
-    console.log("tabId", tabId);
     dispatch(movieAction.sideBarChange(tabId));
   };
 
@@ -39,7 +38,7 @@ function MovieDataSidebar(id) {
       >
         Starships
       </div>
-      <div
+      {/* <div
         className={`${selectedSideBarValue === 5 ? styles.selectedValue : ""}`}
         onClick={(e) => handleChangeTab(5)}
       >
@@ -50,7 +49,7 @@ function MovieDataSidebar(id) {
         onClick={(e) => handleChangeTab(6)}
       >
         Species
-      </div>
+      </div> */}
     </div>
   );
 }

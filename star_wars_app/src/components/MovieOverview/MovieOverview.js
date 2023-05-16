@@ -47,34 +47,15 @@ function MovieOverview() {
     };
   }, [index]);
 
-  const handleMovieDetails = () => {
-    setShowMovieDetails(true);
-  };
-
   return (
     <div className={style.slideshow}>
-      {/* <img src={HomeImage} alt="HomeImage" style={{ width: "100%" }} />
-      <span className={style.episodeOne}>
-        <img src={episodeOne} alt="episodeOne" style={{ width: "100%" }} />
-        <div className={style.moreText}>More</div>
-      </span>
-      <img src={episodeTwo} alt="episodeTwo" style={{ width: "100%" }} />
-      <img src={episodeThree} alt="episodeThree" style={{ width: "100%" }} />
-      <img src={episodeFour} alt="episodeFour" style={{ width: "100%" }} />
-      <img src={episodeFive} alt="episodeFive" style={{ width: "100%" }} />
-      <img src={episodeSix} alt="episodeSix" style={{ width: "100%" }} /> */}
       <div style={{ margin: "0% 10% " }}>
         <div
           className={style.slideshowSlider}
           style={{ transform: `translate3d(${-index * 60}rem, 0, 0)` }}
         >
           {images.map((imgVal, index) => (
-            <div
-              className={style.slide}
-              key={index}
-              //style={{ backgroundColor }}
-              onClick={handleMovieDetails}
-            >
+            <div className={style.slide} key={index}>
               <img src={imgVal} alt="images" className={style.slideShowImage} />
             </div>
           ))}

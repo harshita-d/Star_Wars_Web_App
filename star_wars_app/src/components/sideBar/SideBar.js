@@ -8,8 +8,8 @@ function SideBar() {
         <Link to="/movie" className={styles.LinkText}>
           <div className={styles.loginFirstDiv}>HOME</div>
         </Link>
-        <div className={styles.loginFirstDiv}>ABOUT</div>
-        <div className={styles.loginFirstDiv}>CONTACT</div>
+        {/*  <div className={styles.loginFirstDiv}>ABOUT</div>
+        <div className={styles.loginFirstDiv}>CONTACT</div> */}
       </div>
     </>
   );

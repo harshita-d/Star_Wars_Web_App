@@ -16,59 +16,62 @@ function Navbar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [scrollPosition, setScrollPosition] = useState(0);
+  const [onHomeHover, setonHomeHover] = useState({ id: 0, val: null });
 
   const handleLogout = () => {
     signOut(auth)
       .then(() => {
-        // Sign-out successful.
         dispatch(authActions.loggingStatus(null));
         sessionStorage.removeItem("token");
         navigate("/");
       })
       .catch((error) => {
-        // An error happened.
         console.log("error", error);
       });
   };
 
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const handleScroll = () => {
-    const position = window.pageYOffset;
-    setScrollPosition(position);
-  };
-
-  const navbarStyle = {
-    backgroundColor: scrollPosition > 0 ? "#000" : "transparent",
-    transition: "background-color 0.5s ease-in-out",
-  };
-
   const handleClickFavorite = () => {
-    navigate("/favorites");
+    navigate("/favourites");
   };
 
+  const handleClickHome = () => {
+    navigate("/movie");
+  };
   return (
-    <div className={styles.navbarOuterDiv} style={navbarStyle}>
+    <div className={styles.navbarOuterDiv}>
       <div>
         <Link to="/">
           <img src={Logo} alt="swlogo" style={{ height: "100%" }} />
         </Link>
       </div>
       <div className={styles.logoutButton}>
-        <span>
-          <img src={home} alt="home" />
-          Home
+        <span
+          onClick={handleClickHome}
+          onMouseOver={(e) => setonHomeHover({ id: 1, val: "Home" })}
+          onMouseOut={(e) => setonHomeHover({ id: 0, val: "" })}
+        >
+          <div>
+            <img src={home} alt="Home" className={styles.homeIcon} />
+          </div>
+          <div className={styles.homeText}>
+            {onHomeHover.id === 1 && <>{onHomeHover.val}</>}
+          </div>
         </span>
-        <span onClick={handleClickFavorite}>
+        <span
+          onClick={handleClickFavorite}
+          onMouseOver={(e) => setonHomeHover({ id: 2, val: "favourites" })}
+          onMouseOut={(e) => setonHomeHover({ id: 0, val: "" })}
+        >
           <img src={FavIcon} alt="FavIcon" />
-          Favorites
+          {onHomeHover.id === 2 && <>{onHomeHover.val}</>}
         </span>
-        <span onClick={handleLogout}>
-          <img src={logoutIcon} alt="logoutIcon" style={{ width: "25%" }} />
-          Logout
+        <span
+          onClick={handleLogout}
+          onMouseOver={(e) => setonHomeHover({ id: 3, val: "Logout" })}
+          onMouseOut={(e) => setonHomeHover({ id: 0, val: "" })}
+        >
+          <img src={logoutIcon} alt="logoutIcon" />
+          {onHomeHover.id === 3 && <>{onHomeHover.val}</>}
         </span>
       </div>
     </div>

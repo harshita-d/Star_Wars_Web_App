@@ -1,8 +1,34 @@
 import style from "./StarshipDetails.module.css";
+import axiosHelper from "../../helper/axiosHelper";
+import { useEffect } from "react";
+import axios from "axios";
+import { loaderChangeAction } from "../../../../store/reducer/LoaderReducer";
+import { useDispatch, useSelector } from "react-redux";
+import { movieAction } from "../../../../store/reducer/MovieReducer";
 
 function StarshipDetails(props) {
+  const dispatch = useDispatch();
   const { starshipsData } = props;
-  console.log("starshipsData", starshipsData);
+  const starShipsData = useSelector((state) => state.movieReducer.extraData);
+  useEffect(() => {
+    (async () => {
+      dispatch(loaderChangeAction.loaderCountIncrease());
+      try {
+        const res = await Promise.all(
+          starshipsData.pilots.map((api) => axios.get(api))
+        );
+        const starshipsDataArray = res.map((starship) => starship.data);
+        const arr = [...starShipsData];
+        starshipsDataArray.map((item, ind) => {
+          arr.pilots[Number(ind)] = item.name;
+        });
+        dispatch(movieAction.charactersDataChange(arr));
+        dispatch(loaderChangeAction.loaderCountDecrease());
+      } catch (err) {
+        dispatch(loaderChangeAction.loaderCountDecrease());
+      }
+    })();
+  }, [starShipsData]);
 
   return (
     <div className={style.charactersContainer}>
@@ -32,7 +58,7 @@ function StarshipDetails(props) {
       </div>
       <div>
         <div>Pilots-</div>
-        {starshipsData?.pilots.length > 0 ? (
+        {1 > 2 && starshipsData?.pilots.length > 0 ? (
           starshipsData.pilots.map((item, index) => {
             <span key={index}>{item}</span>;
           })
