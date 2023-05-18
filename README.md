@@ -38,5 +38,13 @@ This application is a responsive and interactive user interface that provides co
 - To add an item to favorites, click the "Add to Favorites" button.
 - To remove an item from favorites, go to the favorites section and click the "Delete" button next to the item.
 
+## Here are Some App Snippets 
 
+- Home 
+![Alt text](images/home.png)
 
+- Movies
+![Alt text](images/movies.png)
+
+- Favourites
+![Alt text](images/favrouties.png)
