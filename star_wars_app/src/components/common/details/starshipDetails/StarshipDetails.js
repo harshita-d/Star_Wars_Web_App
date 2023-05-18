@@ -10,25 +10,32 @@ function StarshipDetails(props) {
   const dispatch = useDispatch();
   const { starshipsData } = props;
   const starShipsData = useSelector((state) => state.movieReducer.extraData);
+  const sideBarStatus = useSelector(
+    (state) => state.movieReducer.sideBarStatus
+  );
   useEffect(() => {
     (async () => {
       dispatch(loaderChangeAction.loaderCountIncrease());
       try {
         const res = await Promise.all(
-          starshipsData.pilots.map((api) => axios.get(api))
+          starShipsData.map(async (starship) => {
+            const pilotsData = await Promise.all(
+              starship.pilots.map((api) => axios.get(api))
+            );
+            const pilotNames = pilotsData.map((pilot) => pilot.data.name);
+            return {
+              ...starship,
+              pilots: pilotNames,
+            };
+          })
         );
-        const starshipsDataArray = res.map((starship) => starship.data);
-        const arr = [...starShipsData];
-        starshipsDataArray.map((item, ind) => {
-          arr.pilots[Number(ind)] = item.name;
-        });
-        dispatch(movieAction.charactersDataChange(arr));
+        dispatch(movieAction.charactersDataChange(res));
         dispatch(loaderChangeAction.loaderCountDecrease());
       } catch (err) {
         dispatch(loaderChangeAction.loaderCountDecrease());
       }
     })();
-  }, [starShipsData]);
+  }, [sideBarStatus]);
 
   return (
     <div className={style.charactersContainer}>
@@ -58,9 +65,9 @@ function StarshipDetails(props) {
       </div>
       <div>
         <div>Pilots-</div>
-        {1 > 2 && starshipsData?.pilots.length > 0 ? (
+        {starshipsData?.pilots && starshipsData?.pilots.length > 0 ? (
           starshipsData.pilots.map((item, index) => {
-            <span key={index}>{item}</span>;
+            return <span key={index}>{item}</span>;
           })
         ) : (
           <span>Not Mentioned</span>

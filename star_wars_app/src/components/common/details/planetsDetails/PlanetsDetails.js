@@ -5,7 +5,6 @@ import favoriteIcon from "../../../../assets/FavOutlineIcon.png";
 
 function PlanetsDetails(props) {
   const { planets } = props;
-  console.log("planets", planets);
 
   return (
     <div className={style.planetsContainer}>
