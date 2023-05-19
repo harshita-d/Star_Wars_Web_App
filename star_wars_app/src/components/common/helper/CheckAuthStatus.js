@@ -1,12 +1,14 @@
+import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { redirect } from "react-router-dom";
+function CheckAuthStatus({ children }) {
+  const userData = useSelector((state) => state.authReducer.authData);
+  const navigate = useNavigate();
 
-function CheckAuthStatus() {
-  const loggedInStatus = sessionStorage.getItem("token");
-  if (!loggedInStatus) {
-    return redirect("/auth");
+  if (userData === null) {
+    navigate.push("/auth");
   }
-  return null;
+
+  return children;
 }
 
 export default CheckAuthStatus;
