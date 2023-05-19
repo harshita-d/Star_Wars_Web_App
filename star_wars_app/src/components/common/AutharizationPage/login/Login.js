@@ -32,7 +32,7 @@ function Login() {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        sessionStorage.setItem("token", user.accessToken);
+        //sessionStorage.setItem("token", user.accessToken);
         dispatch(authActions.loggingStatus(user));
         navigate("/");
       })
